@@ -1,0 +1,24 @@
+{
+  "name": "volley",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon app",
+    "start": "node app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tolentinoel/first-name-analysis.git"
+  },
+  "keywords": [],
+  "author": "ellaine",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tolentinoel/first-name-analysis/issues"
+  },
+  "homepage": "https://github.com/tolentinoel/first-name-analysis#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
