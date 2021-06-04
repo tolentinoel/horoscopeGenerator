@@ -21,3 +21,15 @@ export const findName = async(req, res) => {
     }
 }
 
+export const addName = async (req, res) => {
+
+    try {
+      const {firstname, gender, hexcode, meaning} = req.body
+      const newData = await pool.query("INSERT INTO names (FirstName, Gender, Hexcode, Meaning) VALUES ($1, $2, $3, $4) RETURNING *",[firstname, gender, hexcode, meaning]);
+      res.json(newData.rows[0])
+    } catch (err){
+      console.error(err.message)
+    }
+
+  }
+

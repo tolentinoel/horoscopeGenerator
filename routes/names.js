@@ -1,17 +1,17 @@
-import express from 'express';
+// import express from 'express';
 
-import {addName, getNames, getName} from '../controllers/names.js';
-
-
-const router = express.Router();
+// import {addName, getNames, getName} from '../controllers/names.js';
 
 
-// router.get('/', getNames)
-
-// router.post('/', addName)
-
-// router.get('/:id', getName)
+// const router = express.Router();
 
 
+// // router.get('/', getNames)
 
-export default router;
+// // router.post('/', addName)
+
+// // router.get('/:id', getName)
+
+
+
+// export default router;
