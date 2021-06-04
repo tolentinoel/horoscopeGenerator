@@ -5,13 +5,14 @@
 
 import express from 'express';
 import { allNames, findName, addName } from './routes/test.js';
+import cors from 'cors';
 
 // app.use(bodyParser.json());
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+app.use(cors())
 app.use(express.json())
-
 
 app.get('/', (req, res) => res.send('Try using the /names endpoint'));
 

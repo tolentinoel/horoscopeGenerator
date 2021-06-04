@@ -1,5 +1,6 @@
 // import express from 'express';
 import pool from '../db.js';
+// import { v4 as uuidv4 } from 'uuid';
 
 
 export const allNames = async (req, res) => {
@@ -22,10 +23,11 @@ export const findName = async(req, res) => {
 }
 
 export const addName = async (req, res) => {
-
+    console.log(req.body)
     try {
       const {firstname, gender, hexcode, meaning} = req.body
-      const newData = await pool.query("INSERT INTO names (FirstName, Gender, Hexcode, Meaning) VALUES ($1, $2, $3, $4) RETURNING *",[firstname, gender, hexcode, meaning]);
+      // const { id } = uuidv4()
+      const newData = await pool.query("INSERT INTO names (firstname, gender, hexcode, meaning) VALUES ($1, $2, $3, $4) RETURNING *",[firstname, gender, hexcode, meaning]);
       res.json(newData.rows[0])
     } catch (err){
       console.error(err.message)

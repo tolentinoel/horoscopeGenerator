@@ -3,14 +3,21 @@ CREATE DATABASE name_database;
 --\c into name_database
 
 CREATE TABLE names (
-    FirstName text NOT NULL,
-    Gender text NOT NULL,
-    Hexcode varchar (10),
-    Meaning text
+    id SERIAL PRIMARY KEY NOT NULL,
+    firstname VARCHAR ( 50 ) UNIQUE NOT NULL,
+    gender TEXT NOT NULL,
+    hexcode VARCHAR (15),
+    meaning TEXT
 );
 
--- INSERT INTO names(FirstName, Gender, Hexcode, Meaning)
--- VALUES('Kim', 'Female', 'f7daef', 'Means Gold medal in Vietnamese.'),
---       ('Ellaine', 'Female', 'caf000', 'Sunray in Greek.' );
+INSERT INTO names(id, firstname, gender, hexcode, meaning)
+VALUES(DEFAULT, 'Kim', 'Female', 'f7daef', 'Means Gold medal in Vietnamese.'),
+      (DEFAULT, 'Ellaine', 'Female', 'caf000', 'Sunray in Greek.' ),
+      (DEFAULT, 'Ed', 'Male', '4e7e36', 'Wealthy spear and protector.');
+
+-- INSERT INTO names(id, firstname, gender, hexcode, meaning) 
+-- VALUES( DEFAULT, "Ed", "Male", "4e7e36", "Wealthy spear & protector");
 
 
+-- INSERT INTO names(id, firstname, gender, hexcode, meaning)
+-- VALUES(DEFAULT, 'Ed', 'Male', '4e7e36', 'Wealthy spear and protector.')
