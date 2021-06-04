@@ -2,10 +2,11 @@
   "name": "volley",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "index.js",
+  "type": "module",
   "scripts": {
-    "dev": "nodemon app",
-    "start": "node app"
+    "dev": "nodemon index.js",
+    "start": "node index"
   },
   "repository": {
     "type": "git",
@@ -20,5 +21,10 @@
   "homepage": "https://github.com/tolentinoel/first-name-analysis#readme",
   "devDependencies": {
     "nodemon": "^2.0.7"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "pg": "^8.6.0",
+    "uuid": "^8.3.2"
   }
 }
