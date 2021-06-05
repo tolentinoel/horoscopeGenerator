@@ -3,7 +3,7 @@
 // import { allNames, findName, addName } from './routes/test.js';
 import randomColor from 'randomcolor';
 import fetch from 'node-fetch';
-const express = require("express");
+import express from 'express';
 const app = express();
 const cors = require("cors");
 const pool = require("./db");
@@ -73,7 +73,8 @@ app.post("/names", async (req, res) => {
 });
 
 
-app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}..`);
+const server = app.listen(process.env.PORT || 3000, () => {
+  const port = server.address().port;
+  console.log(`On port ${port}`);
 });
 
