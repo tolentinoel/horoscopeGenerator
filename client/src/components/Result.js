@@ -23,7 +23,7 @@ class Result extends Component {
             alert('Please fill all required field.')
         } else {
 
-            fetch('http://localhost:3000/names', {
+            fetch('/names', {
                 method:  "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(body)
@@ -35,7 +35,7 @@ class Result extends Component {
                     alert("Error adding your name. Please try again.")
                 } else{
                     alert("Name Succesfully added!")
-                    window.location.reload()
+                    window.location= "/"
                 }
 
             })

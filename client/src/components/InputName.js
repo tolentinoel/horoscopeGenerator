@@ -15,14 +15,14 @@ class InputName extends Component {
 
     submitForm = (e)=> {
         e.preventDefault();
-        // debugger
+        
         const nameData = this.state.name
         const genderData = this.state.gender
 
         if (!nameData || !genderData) {
             alert('Please fill all required field.')
         } else {
-            fetch(`http://localhost:3000/names/${genderData}/${nameData}`)
+            fetch(`/names/${genderData}/${nameData}`)
             .then(response => response.json())
             .then(data => {
 
