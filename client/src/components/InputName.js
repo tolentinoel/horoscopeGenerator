@@ -18,11 +18,12 @@ class InputName extends Component {
         
         const nameData = this.state.name
         const genderData = this.state.gender
+        const zodiacData = this.state.zodiac
 
-        if (!nameData || !genderData) {
+        if (!nameData || !genderData || !zodiacData) {
             alert('Please fill all required field.')
         } else {
-            fetch(`/names/${genderData}/${nameData}`)
+            fetch(`/names/${genderData}/${nameData}/${zodiacData}`)
             .then(response => response.json())
             .then(data => {
 
@@ -53,7 +54,7 @@ class InputName extends Component {
 
         return (
             <Fragment>
-                <h1 className="text-center my-5">Color & Horoscope</h1>
+                <h2 className="text-center my-5">Color of your name & General Horoscope Advice</h2>
                 <form className="d-flex" >
                     <input
                         className="form-control"
@@ -86,18 +87,18 @@ class InputName extends Component {
                             name="zodiac"
                             onChange= {this.handleChange}>
                                 <option >...</option>
-                                <option value="aries">Aries</option>
-                                <option value="taurus">Taurus</option>
-                                <option value="gemini">Gemini</option>
-                                <option value="cancer">Cancer</option>
-                                <option value="leo">Leo</option>
-                                <option value="virgo">Virgo</option>
-                                <option value="libra">Libra</option>
-                                <option value="scorpio">Scorpio</option>
-                                <option value="sagittarius">Sagittarius</option>
-                                <option value="capricorn">Capricorn</option>
-                                <option value="aquarius">Aquarius</option>
-                                <option value="pisces">Pisces</option>
+                                <option value="Aries">Aries</option>
+                                <option value="Taurus">Taurus</option>
+                                <option value="Gemini">Gemini</option>
+                                <option value="Cancer">Cancer</option>
+                                <option value="Leo">Leo</option>
+                                <option value="Virgo">Virgo</option>
+                                <option value="Libra">Libra</option>
+                                <option value="Scorpio">Scorpio</option>
+                                <option value="Sagittarius">Sagittarius</option>
+                                <option value="Capricorn">Capricorn</option>
+                                <option value="Aquarius">Aquarius</option>
+                                <option value="Pisces">Pisces</option>
                         </select>
 
                     <button type="submit" onClick={this.submitForm} className="btn btn-warning">Submit</button>

@@ -63,7 +63,7 @@ class Result extends Component {
                     :
                     <div id="result" className= "text-center my-5" >
                         <h4>Sorry, the name submitted is not yet in our database.</h4>
-                        <p>Would like to add your name to our database? Fill out the form below.</p>
+                        <p>Would you like to add your name to our database? Fill out the form below.</p>
 
                         <form className="d-flex" style={{flexDirection: 'column', width: '50%', margin: 'auto'}} >
                             <input
