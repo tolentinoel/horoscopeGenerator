@@ -96,18 +96,18 @@ class Result extends Component {
                                     name="zodiacInput"
                                     onChange= {this.handleChange}>
                                         <option >...</option>
-                                        <option value="aries">Aries</option>
-                                        <option value="taurus">Taurus</option>
-                                        <option value="gemini">Gemini</option>
-                                        <option value="cancer">Cancer</option>
-                                        <option value="leo">Leo</option>
-                                        <option value="virgo">Virgo</option>
-                                        <option value="libra">Libra</option>
-                                        <option value="scorpio">Scorpio</option>
-                                        <option value="sagittarius">Sagittarius</option>
-                                        <option value="capricorn">Capricorn</option>
+                                        <option value="Aries">Aries</option>
+                                        <option value="Taurus">Taurus</option>
+                                        <option value="Gemini">Gemini</option>
+                                        <option value="Cancer">Cancer</option>
+                                        <option value="Leo">Leo</option>
+                                        <option value="Virgo">Virgo</option>
+                                        <option value="Libra">Libra</option>
+                                        <option value="Scorpio">Scorpio</option>
+                                        <option value="Sagittarius">Sagittarius</option>
+                                        <option value="Capricorn">Capricorn</option>
                                         <option value="Aquarius">Aquarius</option>
-                                        <option value="pisces">Pisces</option>
+                                        <option value="Pisces">Pisces</option>
                                 </select>
                             <button type="submit" className="btn btn-success" onClick={this.handleSubmit}>Add Name</button>
                             </div>
