@@ -4,10 +4,11 @@
 import randomColor from 'randomcolor';
 import fetch from 'node-fetch';
 import express from 'express';
+import cors from 'cors';
+import pool from './db.js';
+import path from 'path';
+
 const app = express();
-const cors = require("cors");
-const pool = require("./db");
-const path = require("path");
 const PORT = process.env.PORT || 3000 ;
 const __dirname = path.resolve()
 
