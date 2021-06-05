@@ -20,10 +20,6 @@
   "keywords": [],
   "author": "ellaine",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/tolentinoel/first-name-analysis/issues"
-  },
-  "homepage": "https://github.com/tolentinoel/first-name-analysis#readme",
   "devDependencies": {
     "nodemon": "^2.0.7"
   },

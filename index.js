@@ -1,26 +1,26 @@
 
-import express from 'express';
+
 // import { allNames, findName, addName } from './routes/test.js';
 import randomColor from 'randomcolor';
 import fetch from 'node-fetch';
-import pool from '../db.js';
-import cors from 'cors';
-import path from 'path';
-
+const express = require("express");
 const app = express();
+const cors = require("cors");
+const pool = require("./db");
+const path = require("path");
 const PORT = process.env.PORT || 3000 ;
 const __dirname = path.resolve()
+
 
 if (process.env.NODE_ENV === "production"){
   app.use(express.static(path.join(__dirname, "client/build")))
 }
 
-// app.use(express.static("client/build"))
 app.use(cors())
 app.use(express.json())
 
 //ROUTES
-// app.get('/', (req, res) => res.send('Try using the /names endpoint'));
+app.get('/', (req, res) => res.send('Try using the /names endpoint'));
 
 // GET ALL NAMES
 app.get('/names', async (req, res) => {
