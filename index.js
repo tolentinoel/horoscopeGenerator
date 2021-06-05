@@ -23,8 +23,15 @@ app.get('/', (req, res) => res.send('Try using the /names endpoint'));
 app.get('/names', allNames)
 
 //GET A SPECIFIC NAME
-app.get('/names/:gender/:firstname', findName);
-
+app.get('/names/:gender/:firstname', async(req, res) => {
+  const {gender, firstname}= req.params;
+  try {
+    const resultName = await pool.query("SELECT * FROM names WHERE gender = $1 AND firstname = $2", [gender, firstname]);
+    res.json(resultName.rows)
+  }catch (err) {
+    console.error(err.message)
+  }
+});
 //ADDING NAME TO DB
 app.post("/names", addName);
 
