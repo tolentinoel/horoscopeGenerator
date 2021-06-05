@@ -1,7 +1,8 @@
-// import express from 'express';
-import pool from '../db.js';
-// import { v4 as uuidv4 } from 'uuid';
 
+import pool from '../db.js';
+import randomColor from 'randomcolor';
+import fetch from 'node-fetch';
+// import { v4 as uuidv4 } from 'uuid'; <-- installed this to utilized unique ID generation if db grows bigger
 
 export const allNames = async (req, res) => {
     try {
@@ -23,11 +24,27 @@ export const findName = async(req, res) => {
 }
 
 export const addName = async (req, res) => {
-    console.log(req.body)
+
     try {
-      const {firstname, gender, hexcode, meaning} = req.body
-      // const { id } = uuidv4()
-      const newData = await pool.query("INSERT INTO names (firstname, gender, hexcode, meaning) VALUES ($1, $2, $3, $4) RETURNING *",[firstname, gender, hexcode, meaning]);
+      const {firstname, gender, sign} = req.body
+      const hexcode = randomColor({luminosity:'bright', count: 1})
+      const formatSign = sign.toLowerCase()
+
+      let d = new Date().getDate()
+      let m = new Date().getUTCDay()
+      let y = new Date().getUTCFullYear()-1 //minus 1 since the API only allows 2020 readings
+
+      let horoscope
+      horoscope = await fetch(`https://horoscope5.p.rapidapi.com/general/daily?sign=${formatSign}&date=${y}-${m}-${d}`, {
+          "method": "GET",
+          "headers": {
+            "x-rapidapi-key": "03d3d82ab4mshc35210787820efap1d8f55jsn0fc7b41c1c9c",
+            "x-rapidapi-host": "horoscope5.p.rapidapi.com"
+          }
+        }).then(res => res.json())
+          .then(data => data.result.description)
+
+      const newData = await pool.query("INSERT INTO names (firstname, gender, hexcode, sign, horoscope) VALUES ($1, $2, $3, $4, $5) RETURNING *",[firstname, gender, hexcode,sign, horoscope]);
       res.json(newData.rows[0])
     } catch (err){
       console.error(err.message)

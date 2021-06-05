@@ -7,6 +7,7 @@ class InputName extends Component {
     state = {
         name: "",
         gender: "",
+        zodiac: "",
         data: null,
         result: false
     }
@@ -14,7 +15,7 @@ class InputName extends Component {
 
     submitForm = (e)=> {
         e.preventDefault();
-
+        // debugger
         const nameData = this.state.name
         const genderData = this.state.gender
 
@@ -24,9 +25,13 @@ class InputName extends Component {
             fetch(`http://localhost:3000/names/${genderData}/${nameData}`)
             .then(response => response.json())
             .then(data => {
-                // this.showResults(data)
+
+                if (data.length === 0)  {
+                    this.setState({ data: [], result: true })
+                    this.resetForm()
+                }
                 this.setState({ data: data, result: true })
-                // this.resetForm()
+                this.resetForm()
             })
 
         }
@@ -36,31 +41,19 @@ class InputName extends Component {
         this.setState({[e.target.name]: e.target.value})
     }
 
-    // resetForm = () => {
-    //     this.setState({
-    //       name: '',
-    //       gender: ''
-    //     });
-    // }
-
-    showResults = (data) => {
-        this.setState({result : true})
-
-        data.map(obj => {
-            const {firstname, gender, meaning, hex} = obj
-            return (
-                <Result name={firstname} gender={gender} meaning={meaning} color={hex} />
-            )
-        })
-
+    resetForm = () => {
+        this.setState({
+          name: '',
+          gender: '',
+          zodiac: ''
+        });
     }
-
 
     render() {
 
         return (
             <Fragment>
-                <h1 className="text-center my-5">What's your name?</h1>
+                <h1 className="text-center my-5">Color & Horoscope</h1>
                 <form className="d-flex" >
                     <input
                         className="form-control"
@@ -85,10 +78,33 @@ class InputName extends Component {
                                 <option value="Male">Male</option>
                         </select>
 
-                    </div>
+                        <label className="input-group-text" htmlFor="inputGroupSelect03">Zodiac:</label>
+                        <select
+                            className="form-select"
+                            id="inputGroupSelect03"
+                            value= {this.state.zodiac}
+                            name="zodiac"
+                            onChange= {this.handleChange}>
+                                <option >...</option>
+                                <option value="aries">Aries</option>
+                                <option value="taurus">Taurus</option>
+                                <option value="gemini">Gemini</option>
+                                <option value="cancer">Cancer</option>
+                                <option value="leo">Leo</option>
+                                <option value="virgo">Virgo</option>
+                                <option value="libra">Libra</option>
+                                <option value="scorpio">Scorpio</option>
+                                <option value="sagittarius">Sagittarius</option>
+                                <option value="capricorn">Capricorn</option>
+                                <option value="aquarius">Aquarius</option>
+                                <option value="pisces">Pisces</option>
+                        </select>
+
                     <button type="submit" onClick={this.submitForm} className="btn btn-warning">Submit</button>
+                    </div>
                 </form>
-                {this.state.result ? <Result data={this.state.data}/> : null }
+                {this.state.result ? <Result data={this.state.data} nameState={this.state.name} genderState={this.state.gender} zodiacState={this.state.zodiac}/> : null }
+
             </Fragment>
         );
 
