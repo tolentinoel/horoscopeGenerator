@@ -22,12 +22,12 @@ POST ```http://localhost:3000/names``` - adding name to DB with this format.<br/
 
 ```JSON
 {
-    "firstname": "Mark",
-    "gender": "Male",
-    "hexcode": "6273a4",
-    "meaning": "Strong and energetic."
+    "firstname": "Via",
+    "gender": "Female",
+    "sign": "Gemini"
 }
 ```
 
 Reference: <br/>
 [Colr.org API source](http://www.colr.org/json/color/random )
+[Horoscope - Rapid API](https://rapidapi.com/tirtain/api/horoscope5/)

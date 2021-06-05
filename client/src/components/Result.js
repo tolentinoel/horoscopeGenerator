@@ -58,7 +58,7 @@ class Result extends Component {
                     <div id="result" className= "text-center my-3" style={{backgroundColor: `#${this.props.data[0].hexcode.replace(/\W+/g, "")}`}}>
                         <h2>{this.props.data[0].firstname}</h2>
                         <p>Sign: {this.props.data[0].sign}</p>
-                        <p>General advice: {this.props.data[0].horoscope}</p>
+                        <p><strong>General advice:</strong><br/> {this.props.data[0].horoscope}</p>
                     </div>
                     :
                     <div id="result" className= "text-center my-5" >
