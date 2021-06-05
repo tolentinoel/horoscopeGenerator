@@ -17,7 +17,7 @@ app.use(cors())
 app.use(express.json())
 
 //ROUTES
-app.get('/', (req, res) => res.send('Try using the /names endpoint'));
+// app.get('/', (req, res) => res.send('Try using the /names endpoint'));
 
 // GET ALL NAMES
 app.get('/names', allNames)

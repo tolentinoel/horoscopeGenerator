@@ -1,12 +1,12 @@
 
-import pool from '../db.js';
 import randomColor from 'randomcolor';
 import fetch from 'node-fetch';
+import pool from '../db.js';
 // import { v4 as uuidv4 } from 'uuid'; <-- installed this to utilized unique ID generation if db grows bigger
 
 export const allNames = async (req, res) => {
     try {
-        const allNames = await pool.query("SELECT * FROM names")
+        const allNames = await pool.query("SELECT * FROM names;")
         res.json(allNames.rows)
     }catch (err) {
         console.error(err.message)

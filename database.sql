@@ -9,9 +9,9 @@ CREATE TABLE names (
 );
 --  MOCK DATA TO TEST SQL AND FRONT END
 
--- INSERT INTO names(id, firstname, gender, hexcode, sign)
--- VALUES(DEFAULT, 'Kim', 'Female', 'f7daef', 'cancer'),
---       (DEFAULT, 'Ellaine', 'Female', 'caf000', 'taurus' );
+-- INSERT INTO names( firstname, gender, sign)
+-- VALUES( 'Kim', 'Female', 'cancer'),
+--       ( 'Ellaine', 'Female', 'taurus' );
 
 
 
