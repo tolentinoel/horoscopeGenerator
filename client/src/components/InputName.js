@@ -15,7 +15,7 @@ class InputName extends Component {
 
     submitForm = (e)=> {
         e.preventDefault();
-        
+
         const nameData = this.state.name
         const genderData = this.state.gender
         const zodiacData = this.state.zodiac
@@ -26,7 +26,7 @@ class InputName extends Component {
             fetch(`/names/${genderData}/${nameData}/${zodiacData}`)
             .then(response => response.json())
             .then(data => {
-                    debugger
+
                 if (data.length === 0)  {
                     this.setState({ data: [], result: true })
                     this.resetForm()

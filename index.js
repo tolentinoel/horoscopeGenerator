@@ -1,13 +1,10 @@
-
-
-// import { allNames, findName, addName } from './routes/test.js';
 import randomColor from 'randomcolor';
 import fetch from 'node-fetch';
 import express from 'express';
 import cors from 'cors';
 import pool from './db.js';
 import path from 'path';
-import timeout from 'connect-timeout';
+
 
 const app = express();
 const PORT = process.env.PORT || 3000 ;
@@ -26,7 +23,7 @@ app.use(express.json())
 // GET ALL NAMES
 app.get('/names', async (req, res) => {
   try {
-      const allNames = await pool.query("SELECT * FROM names;")
+      const allNames = await pool.query("SELECT * FROM names")
       res.json(allNames.rows)
   }catch (err) {
       console.error(err.message)
@@ -46,7 +43,7 @@ app.get('/names/:gender/:firstname/:sign', async(req, res) => {
 });
 
 //ADDING NAME TO DB
-app.post("/names",timeout('3s'), haltOnTimedout, async (req, res) => {
+app.post("/names", async (req, res) => {
 
   try {
     const {firstname, gender, sign} = req.body
@@ -67,18 +64,16 @@ app.post("/names",timeout('3s'), haltOnTimedout, async (req, res) => {
       }).then(res => res.json())
         .then(data => data.result.description)
 
-  
+    !horoscope ? alert("Error occured, Please try again.") : null
+    
     const newData = await pool.query("INSERT INTO names (firstname, gender, hexcode, sign, horoscope) VALUES ($1, $2, $3, $4, $5) RETURNING *",[firstname, gender, hexcode,sign, horoscope]);
     res.json(newData.rows[0])
+
   } catch (err){
     console.error(err.message)
   }
 
 });
-
-const haltOnTimedout =  (req, res, next) => {
-  if (!req.timedout) next()
-}
 
 
 const server = app.listen(process.env.PORT || 3000, () => {
