@@ -5,18 +5,18 @@ import '../styles/Result.css';
 class Result extends Component {
 
     state ={
-        newName: "",
-        genderInput:"",
-        zodiacInput: ""
+        name: "",
+        gender: "",
+        zodiac: ""
     }
 
     handleSubmit = (e)=> {
         e.preventDefault();
 
         let body = {
-            firstname: this.state.newName,
-            gender: this.state.genderInput,
-            sign: this.state.zodiacInput
+            firstname: this.state.name,
+            gender: this.state.gender,
+            sign: this.state.zodiac
         }
 
         if (!body) {
@@ -50,7 +50,7 @@ class Result extends Component {
 
 
     render(){
-        // console.log(this.props.nameState, this.props.genderState, this.props.zodiacState)
+        
         return (
                 <div>
                     {this.props.data.length !== 0 ?
@@ -70,8 +70,8 @@ class Result extends Component {
                                 className="form-control"
                                 type="text"
                                 placeholder="Your first name"
-                                value={this.state.newName}
-                                name="newName"
+                                value={this.state.name}
+                                name="name"
                                 onChange= {this.handleChange}
                             />
 
@@ -80,8 +80,8 @@ class Result extends Component {
                                 <select
                                     className="form-select"
                                     id="inputGroupSelect02"
-                                    value= {this.state.genderInput}
-                                    name="genderInput"
+                                    value= {this.state.gender}
+                                    name="gender"
                                     onChange= {this.handleChange}>
                                         <option >...</option>
                                         <option value="Female">Female</option>
@@ -92,8 +92,8 @@ class Result extends Component {
                                 <select
                                     className="form-select"
                                     id="inputGroupSelect03"
-                                    value= {this.state.zodiacInput}
-                                    name="zodiacInput"
+                                    value= {this.state.zodiac}
+                                    name="zodiac"
                                     onChange= {this.handleChange}>
                                         <option >...</option>
                                         <option value="Aries">Aries</option>
