@@ -7,6 +7,7 @@ import express from 'express';
 import cors from 'cors';
 import pool from './db.js';
 import path from 'path';
+import timeout from 'connect-timeout';
 
 const app = express();
 const PORT = process.env.PORT || 3000 ;
@@ -45,7 +46,7 @@ app.get('/names/:gender/:firstname/:sign', async(req, res) => {
 });
 
 //ADDING NAME TO DB
-app.post("/names", async (req, res) => {
+app.post("/names",timeout('3s'), haltOnTimedout, async (req, res) => {
 
   try {
     const {firstname, gender, sign} = req.body
@@ -66,7 +67,7 @@ app.post("/names", async (req, res) => {
       }).then(res => res.json())
         .then(data => data.result.description)
 
-    await sleep(2000);
+  
     const newData = await pool.query("INSERT INTO names (firstname, gender, hexcode, sign, horoscope) VALUES ($1, $2, $3, $4, $5) RETURNING *",[firstname, gender, hexcode,sign, horoscope]);
     res.json(newData.rows[0])
   } catch (err){
@@ -74,6 +75,10 @@ app.post("/names", async (req, res) => {
   }
 
 });
+
+const haltOnTimedout =  (req, res, next) => {
+  if (!req.timedout) next()
+}
 
 
 const server = app.listen(process.env.PORT || 3000, () => {
