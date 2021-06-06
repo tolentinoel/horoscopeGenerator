@@ -1,5 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import Result from './Result.js';
+import '../styles/InputName.css';
 
 class InputName extends Component {
 
@@ -55,7 +56,7 @@ class InputName extends Component {
         return (
             <Fragment>
                 <h2 className="text-center my-5">Color of your name & General Horoscope Advice</h2>
-                <form className="d-flex" >
+                <form className="d-flex" id="form">
                     <input
                         className="form-control"
                         type="text"
