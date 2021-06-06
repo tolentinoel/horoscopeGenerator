@@ -64,22 +64,26 @@ app.post("/names", async (req, res) => {
           "x-rapidapi-host": "horoscope5.p.rapidapi.com"
         }
       }).then(res => res.json())
-        .then(data => {
-          if (!data.result.description){
-            console.log("No horoscope available")
-          } else {
-            return data.result.description
-          }
-        })
+        .then(data => insertName(data.result.description, firstname, gender, sign, hexcode ))
 
 
-    const newData = await pool.query("INSERT INTO names (firstname, gender, hexcode, sign, horoscope) VALUES ($1, $2, $3, $4, $5) RETURNING *",[firstname, gender, hexcode,sign, horoscope]);
-    res.json(newData.rows[0])
+  //   const newData = await pool.query("INSERT INTO names (firstname, gender, hexcode, sign, horoscope) VALUES ($1, $2, $3, $4, $5) RETURNING *",[firstname, gender, hexcode,sign, horoscope]);
+  //   res.json(newData.rows[0])
   } catch (err){
     console.error(err.message)
   }
+}
+);
 
-});
+const insertName =  (horoscope, firstname, gender, sign, hexcode) => {
+  try {
+  const newData = await pool.query("INSERT INTO names (firstname, gender, hexcode, sign, horoscope) VALUES ($1, $2, $3, $4, $5) RETURNING *",[firstname, gender, hexcode,sign, horoscope]);
+  res.json(newData.rows[0])
+  } catch (err){
+  console.error(err.message)
+  }
+}
+
 
 
 const server = app.listen(process.env.PORT || 3000, () => {
