@@ -51,8 +51,8 @@ app.post("/names", async (req, res) => {
     const formatSign = sign.toLowerCase()
 
     let d = new Date().getDate()
-    let m = new Date().getUTCDay()
-    let y = new Date().getUTCFullYear()-1 //minus 1 since the API only allows 2020 readings
+    let m = new Date().getMonth()
+    let y = new Date().getFullYear()-1 //minus 1 since the API only allows 2020 readings
 
     let horoscope
     horoscope = await fetch(`https://horoscope5.p.rapidapi.com/general/daily?sign=${formatSign}&date=${y}-${m}-${d}`, {
@@ -62,7 +62,7 @@ app.post("/names", async (req, res) => {
           "x-rapidapi-host": "horoscope5.p.rapidapi.com"
         }
       }).then(res => res.json())
-        .then(data => data.result.date)
+        .then(data => data.result.description)
 
 
     const newData = await pool.query("INSERT INTO names (firstname, gender, hexcode, sign, horoscope) VALUES ($1, $2, $3, $4, $5) RETURNING *",[firstname, gender, hexcode,sign, horoscope]);
