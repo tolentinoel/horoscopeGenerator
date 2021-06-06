@@ -62,10 +62,9 @@ app.post("/names", async (req, res) => {
           "x-rapidapi-host": "horoscope5.p.rapidapi.com"
         }
       }).then(res => res.json())
-        .then(data => data.result.description)
+        .then(data => data.result.date)
 
-    !horoscope ? alert("Error occured, Please try again.") : null
-    
+
     const newData = await pool.query("INSERT INTO names (firstname, gender, hexcode, sign, horoscope) VALUES ($1, $2, $3, $4, $5) RETURNING *",[firstname, gender, hexcode,sign, horoscope]);
     res.json(newData.rows[0])
 
