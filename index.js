@@ -35,7 +35,7 @@ app.get('/names', async (req, res) => {
 //GET A SPECIFIC NAME
 app.get('/names/:gender/:firstname/:sign', async(req, res) => {
   const {gender, firstname, sign}= req.params;
-  
+
   try {
     const resultName = await pool.query("SELECT * FROM names WHERE gender = $1 AND firstname = $2 AND sign = $3", [gender, firstname, sign]);
     res.json(resultName.rows)
@@ -64,7 +64,14 @@ app.post("/names", async (req, res) => {
           "x-rapidapi-host": "horoscope5.p.rapidapi.com"
         }
       }).then(res => res.json())
-        .then(data => data.result.description)
+        .then(data => {
+          if (!data.result.description){
+            console.log("No horoscope available")
+          } else {
+            return data.result.description
+          }
+        })
+
 
     const newData = await pool.query("INSERT INTO names (firstname, gender, hexcode, sign, horoscope) VALUES ($1, $2, $3, $4, $5) RETURNING *",[firstname, gender, hexcode,sign, horoscope]);
     res.json(newData.rows[0])
