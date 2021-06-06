@@ -33,10 +33,11 @@ app.get('/names', async (req, res) => {
 })
 
 //GET A SPECIFIC NAME
-app.get('/names/:gender/:firstname/:zodiac', async(req, res) => {
+app.get('/names/:gender/:firstname/:sign', async(req, res) => {
   const {gender, firstname, sign}= req.params;
+  
   try {
-    const resultName = await pool.query("SELECT * FROM names WHERE gender = $1 AND firstname = $2  AND sign = $3", [gender, firstname, sign]);
+    const resultName = await pool.query("SELECT * FROM names WHERE gender = $1 AND firstname = $2 AND sign = $3", [gender, firstname, sign]);
     res.json(resultName.rows)
   }catch (err) {
     console.error(err.message)
