@@ -1,5 +1,5 @@
 {
-  "name": "volley",
+  "name": "horoscope",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tolentinoel/first-name-analysis.git"
+    "url": "git+https://github.com/tolentinoel/horoscopeGenerator.git"
   },
   "keywords": [],
   "author": "ellaine",

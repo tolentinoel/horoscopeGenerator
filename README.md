@@ -1,7 +1,7 @@
-# first-name-analysis
+# Horoscope Generator
 
 **GETTING STARTED:** <br/>
-Click the link for the browser experience. [name-analysis-app](https://name-analysis-app.herokuapp.com/)
+Click the link for the browser experience. [Horoscope Generator](https://name-analysis-app.herokuapp.com/)
 
 
 **QUERY:**<br/>
@@ -39,6 +39,6 @@ Body format for request should be like this;
 ```
 
 Reference: <br/>
-[Colr.org API source](http://www.colr.org/json/color/random )
+[Colr.org API source](http://www.colr.org/json/color/random)
 <br/>
-[Horoscope - Rapid API](https://rapidapi.com/tirtain/api/horoscope5/)
+[DevBrewer Horoscope API - Rapid API](https://rapidapi.com/zedjeep/api/devbrewer-horoscope/)
