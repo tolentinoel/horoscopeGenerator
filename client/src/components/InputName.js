@@ -1,6 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import Result from './Result.js';
 import '../styles/InputName.css';
+import randomColor from 'randomcolor';
 
 class InputName extends Component {
 
@@ -11,7 +12,7 @@ class InputName extends Component {
         zodiac: "",
         data: null,
         result: false,
-        toAdd: {}
+        color: ""
     }
 
 
@@ -19,31 +20,30 @@ class InputName extends Component {
         e.preventDefault();
         let nameData = this.state.name
         let genderData = this.state.gender
-
-        //   let genderData = this.state.gender.replace(
-        //     /\w\S*/g
-        //     // function(txt) {
-        //     //   return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-        //     // }
-        //   )
         let zodiacData = this.state.zodiac
 
-        debugger
         if (!nameData || !genderData || !zodiacData) {
             alert('Please fill all required field.')
         } else {
 
-            fetch(`https://name-analysis-app.herokuapp.com/names/${genderData}/${nameData}/${zodiacData}`)
-            .then(response => response.json())
-            .then(data => {
-                if (data.length === 0)  {
-                    this.setState({ data: [], result: true })
+            fetch(`https://devbrewer-horoscope.p.rapidapi.com/week/short/${zodiacData}`, {
+                method:  'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-rapidapi-host': 'devbrewer-horoscope.p.rapidapi.com',
+                    'x-rapidapi-key': '03d3d82ab4mshc35210787820efap1d8f55jsn0fc7b41c1c9c'
+                    }
+                })
+                .then(res => res.json())
+                .then(newData => {
+                    
+                    this.setState({
+                        data: newData[`${zodiacData}`]['This Week'],
+                        result: true,
+                        color: randomColor({luminosity:'bright', count: 1})
+                    })
 
-                }
-                this.setState({ data: data, result: true })
-                this.resetForm()
-            })
-
+                    })
         }
     }
 
@@ -113,7 +113,7 @@ class InputName extends Component {
                     <button type="submit" onClick={this.submitForm} className="btn btn-warning">Submit</button>
                     </div>
                 </form>
-                {this.state.result ? <Result data={this.state.data} nameState={this.state.name} genderState={this.state.gender} zodiacState={this.state.zodiac}/> : null }
+                {this.state.result ? <Result colorState={this.state.color} data={this.state.data} nameState={this.state.name} genderState={this.state.gender} zodiacState={this.state.zodiac} /> : null }
 
             </Fragment>
         );

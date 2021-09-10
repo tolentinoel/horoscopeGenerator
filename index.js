@@ -43,38 +43,41 @@ app.get('/names/:gender/:firstname/:sign', async(req, res) => {
 });
 
 //ADDING NAME TO DB
-app.post("/names", async (req, res) => {
+app.post('/names', async (req, res) => {
 
-  try {
-    const {firstname, gender, sign} = req.body
-    const hexcode = randomColor({luminosity:'bright', count: 1})
-    const formatSign = sign
+  let {firstname, gender, sign} = req.body
+  console.log(req)
+  console.log(res)
+  console.log(firstname)
 
-    let horoscope
+  // try {
+  //   let {firstname, gender, sign} = req.body
+  //   const hexcode = randomColor({luminosity:'bright', count: 1})
+  //   let horoscope
 
-    horoscope = await fetch(`https://devbrewer-horoscope.p.rapidapi.com/week/short/${sign}`, {
-      "method": "GET",
-      "headers": {
-        "x-rapidapi-host": "devbrewer-horoscope.p.rapidapi.com",
-        "x-rapidapi-key": "03d3d82ab4mshc35210787820efap1d8f55jsn0fc7b41c1c9c"
-      }
-    }).then(res => res.json())
-      .then(data => {
+  //   horoscope = await fetch(`https://devbrewer-horoscope.p.rapidapi.com/week/short/${sign}`, {
+  //     "method": "GET",
+  //     "headers": {
+  //       "x-rapidapi-host": "devbrewer-horoscope.p.rapidapi.com",
+  //       "x-rapidapi-key": "03d3d82ab4mshc35210787820efap1d8f55jsn0fc7b41c1c9c"
+  //     }
+  //   })
+  //   .then(res => res.json())
+  //   .then(data => data.sign)
+  //   // data.sign['This Week'])
+  //   console.log(horoscope)
+  //   let newData = await pool.query('INSERT INTO names (firstname, gender, hexcode, sign, horoscope) VALUES ($1, $2, $3, $4, $5) RETURNING *',[firstname, gender, hexcode, sign, horoscope]);
 
-        data.sign['This Week']
-      })
+  //   res.json(newData.rows[0])
 
-    const newData = await pool.query("INSERT INTO names (firstname, gender, hexcode, sign, horoscope) VALUES ($1, $2, $3, $4, $5) RETURNING *",[firstname, gender, hexcode, sign, horoscope]);
-    res.json(newData.rows[0])
-
-  } catch (err){
-    console.error(err.message)
-  }
+  // } catch (err){
+  //   console.error(err.message)
+  // }
 
 });
 
 
-const server = app.listen(process.env.PORT || 3000, () => {
+const server = app.listen(process.env.PORT || 3000 || 3001, () => {
   const port = server.address().port;
   console.log(`On port ${port}`);
 });

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import '../styles/Result.css';
 
 
+
 class Result extends Component {
 
     state ={
@@ -21,16 +22,19 @@ class Result extends Component {
         if (!body) {
             alert('Please fill all required field.')
         } else {
-
-            fetch('/names', {
-                method:  "POST",
-                mode: 'no-cors',
-                headers: {"Content-Type": "application/json"},
-                body: JSON.stringify(body)
-              })
-              .then(res => res.json())
-              .then(data => {
-                  debugger
+            debugger
+            fetch(`https://devbrewer-horoscope.p.rapidapi.com/week/short/${body.sign}`, {
+                method:  'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-rapidapi-host': 'devbrewer-horoscope.p.rapidapi.com',
+                    'x-rapidapi-key': '03d3d82ab4mshc35210787820efap1d8f55jsn0fc7b41c1c9c'
+                }
+            })
+            .then(res => res.json())
+            .then(data => {
+                
+                debugger
                 if (data.error){
                     alert("Error adding your name. Please try again.")
                 } else{
@@ -51,17 +55,16 @@ class Result extends Component {
 
 
     render(){
-
+        
         return (
 
                 <div>
+                    { this.props ?
+                    <div id="result" className= "text-center my-3" style={{backgroundColor: `${this.props.colorState[0].replace(/\W+/g, "")}`}}>
 
-                    {this.props.data.length !== 0 ?
-                    <div id="result" className= "text-center my-3" style={{backgroundColor: `#${this.props.data[0].hexcode.replace(/\W+/g, "")}`}}>
-
-                        <h2>{this.props.data[0].firstname}</h2>
-                        <p>Sign: {this.props.data[0].sign}</p>
-                        <p><strong>General advice:</strong><br/> {this.props.data[0].horoscope}</p>
+                        <h2>{this.props.nameState}</h2>
+                        <p>Sign: {this.props.zodiacState}</p>
+                        <p><strong>General advice:</strong><br/> {this.props.data}</p>
                     </div>
                     :
                     <div id="result" className= "text-center my-5" >
