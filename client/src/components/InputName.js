@@ -16,15 +16,30 @@ class InputName extends Component {
 
     submitForm = (e)=> {
         e.preventDefault();
-
-        const nameData = this.state.name
-        const genderData = this.state.gender
-        const zodiacData = this.state.zodiac
-
+        const nameData = this.state.name.replace(
+            /\w\S*/g,
+            function(txt) {
+              return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+            }
+          )
+        const genderData = this.state.gender.replace(
+            /\w\S*/g,
+            function(txt) {
+              return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+            }
+          )
+        const zodiacData = this.state.zodiac.replace(
+            /\w\S*/g,
+            function(txt) {
+              return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+            }
+          )
+      
         if (!nameData || !genderData || !zodiacData) {
             alert('Please fill all required field.')
         } else {
-            fetch(`/names/${genderData}/${nameData}/${zodiacData}`)
+
+            fetch(`https://name-analysis-app.herokuapp.com/names/${genderData}/${nameData}/${zodiacData}`)
             .then(response => response.json())
             .then(data => {
 
@@ -55,7 +70,7 @@ class InputName extends Component {
 
         return (
             <Fragment>
-                <h2 className="text-center my-5">Color of your name & General Horoscope Advice</h2>
+                <h2 className="text-center my-5">General Horoscope Advice</h2>
                 <form className="d-flex" id="form">
                     <input
                         className="form-control"

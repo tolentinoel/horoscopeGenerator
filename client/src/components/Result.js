@@ -12,7 +12,7 @@ class Result extends Component {
 
     handleSubmit = (e)=> {
         e.preventDefault();
-
+     
         let body = {
             firstname: this.state.name,
             gender: this.state.gender,
@@ -30,7 +30,7 @@ class Result extends Component {
               })
               .then(res => res.json())
               .then(data => {
-
+                debugger
                 if (data.error){
                     alert("Error adding your name. Please try again.")
                 } else{
@@ -52,16 +52,19 @@ class Result extends Component {
     render(){
         
         return (
+            
                 <div>
+                    
                     {this.props.data.length !== 0 ?
-
                     <div id="result" className= "text-center my-3" style={{backgroundColor: `#${this.props.data[0].hexcode.replace(/\W+/g, "")}`}}>
+                        
                         <h2>{this.props.data[0].firstname}</h2>
                         <p>Sign: {this.props.data[0].sign}</p>
                         <p><strong>General advice:</strong><br/> {this.props.data[0].horoscope}</p>
                     </div>
                     :
                     <div id="result" className= "text-center my-5" >
+                        
                         <h4>Sorry, the name submitted is not yet in our database.</h4>
                         <p>Would you like to add your name to our database? Fill out the form below.</p>
 
