@@ -7,7 +7,7 @@ import path from 'path';
 
 
 const app = express();
-const PORT = process.env.PORT || 3000 ;
+const PORT = process.env.PORT || 3000 || 3001;
 const __dirname = path.resolve()
 
 
@@ -48,24 +48,11 @@ app.post("/names", async (req, res) => {
   try {
     const {firstname, gender, sign} = req.body
     const hexcode = randomColor({luminosity:'bright', count: 1})
-    const formatSign = sign.toLowerCase()
-
-    let d = new Date().getDate()
-    let m = new Date().getMonth()
-    let y = new Date().getFullYear()-1 //minus 1 since the API only allows 2020 readings
+    const formatSign = sign
 
     let horoscope
-    // horoscope = await fetch(`https://horoscope5.p.rapidapi.com/general/daily?sign=${formatSign}&date=${y}-${m}-${d}`, {
-    //     "method": "GET",
-    //     "headers": {
-    //       "x-rapidapi-key": "03d3d82ab4mshc35210787820efap1d8f55jsn0fc7b41c1c9c",
-    //       "x-rapidapi-host": "horoscope5.p.rapidapi.com"
-    //     }
-    //   }).then(res => res.json())
-    //     .then(data => data.result.description)
 
-
-    horoscope = await fetch(`https://devbrewer-horoscope.p.rapidapi.com/week/short/${formatSign}`, {
+    horoscope = await fetch(`https://devbrewer-horoscope.p.rapidapi.com/week/short/${sign}`, {
       "method": "GET",
       "headers": {
         "x-rapidapi-host": "devbrewer-horoscope.p.rapidapi.com",
@@ -73,10 +60,10 @@ app.post("/names", async (req, res) => {
       }
     }).then(res => res.json())
       .then(data => {
-       
-        data.formatSign.toUpperCase()['This Week']
+
+        data.sign['This Week']
       })
-    
+
     const newData = await pool.query("INSERT INTO names (firstname, gender, hexcode, sign, horoscope) VALUES ($1, $2, $3, $4, $5) RETURNING *",[firstname, gender, hexcode, sign, horoscope]);
     res.json(newData.rows[0])
 

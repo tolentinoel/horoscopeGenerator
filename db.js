@@ -3,7 +3,6 @@ const { Pool } = pkg;
 // require('dotenv').config();
 
 const devConfig = {
-
     user: process.env.PG_USE,
     password: process.env.PG_PASSWORD,
     database: process.env.PG_DATABASE,

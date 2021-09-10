@@ -10,31 +10,25 @@ class InputName extends Component {
         gender: "",
         zodiac: "",
         data: null,
-        result: false
+        result: false,
+        toAdd: {}
     }
 
 
     submitForm = (e)=> {
         e.preventDefault();
-        const nameData = this.state.name.replace(
-            /\w\S*/g,
-            function(txt) {
-              return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-            }
-          )
-        const genderData = this.state.gender.replace(
-            /\w\S*/g,
-            function(txt) {
-              return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-            }
-          )
-        const zodiacData = this.state.zodiac.replace(
-            /\w\S*/g,
-            function(txt) {
-              return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-            }
-          )
-      
+        let nameData = this.state.name
+        let genderData = this.state.gender
+
+        //   let genderData = this.state.gender.replace(
+        //     /\w\S*/g
+        //     // function(txt) {
+        //     //   return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+        //     // }
+        //   )
+        let zodiacData = this.state.zodiac
+
+        debugger
         if (!nameData || !genderData || !zodiacData) {
             alert('Please fill all required field.')
         } else {
@@ -42,10 +36,9 @@ class InputName extends Component {
             fetch(`https://name-analysis-app.herokuapp.com/names/${genderData}/${nameData}/${zodiacData}`)
             .then(response => response.json())
             .then(data => {
-
                 if (data.length === 0)  {
                     this.setState({ data: [], result: true })
-                    this.resetForm()
+
                 }
                 this.setState({ data: data, result: true })
                 this.resetForm()
