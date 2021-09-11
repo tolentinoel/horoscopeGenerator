@@ -60,7 +60,7 @@ class Result extends Component {
 
                 <div>
                     { this.props ?
-                    <div id="result" className= "text-center my-3" style={{backgroundColor: `${this.props.colorState[0].replace(/\W+/g, "")}`}}>
+                    <div id="result" className= "text-center my-3" style={{backgroundColor: `${this.props.colorState[0]}`}}>
 
                         <h2>{this.props.nameState}</h2>
                         <p>Sign: {this.props.zodiacState}</p>
@@ -69,58 +69,8 @@ class Result extends Component {
                     :
                     <div id="result" className= "text-center my-5" >
 
-                        <h4>Sorry, the name submitted is not yet in our database.</h4>
-                        <p>Would you like to add your name to our database? Please confirm and submit the form below.</p>
-
-                        <form className="d-flex" style={{flexDirection: 'column', width: '50%', margin: 'auto'}} >
-                            <input
-                                className="form-control"
-                                type="text"
-                                placeholder={this.state.name}
-                                value={this.state.name}
-                                name="name"
-                                onChange= {this.handleChange}
-                            />
-
-                            <div className="input-group mb-1" style={{ justifyContent: 'center'}} >
-                                <label className="input-group-text" htmlFor="inputGroupSelect02">Gender Identity:</label>
-                                <select
-                                    className="form-select"
-                                    id="inputGroupSelect02"
-                                    value= {this.state.gender}
-                                    placeholder= {this.state.gender}
-                                    name="gender"
-                                    onChange= {this.handleChange}>
-                                        <option >...</option>
-                                        <option value="Female">Female</option>
-                                        <option value="Male">Male</option>
-                                </select>
-
-                                <label className="input-group-text" htmlFor="inputGroupSelect03">Zodiac:</label>
-                                <select
-                                    className="form-select"
-                                    id="inputGroupSelect03"
-                                    value= {this.state.zodiac}
-                                    placeholder = {this.state.zodiac}
-                                    name="zodiac"
-                                    onChange= {this.handleChange}>
-                                        <option >...</option>
-                                        <option value="Aries">Aries</option>
-                                        <option value="Taurus">Taurus</option>
-                                        <option value="Gemini">Gemini</option>
-                                        <option value="Cancer">Cancer</option>
-                                        <option value="Leo">Leo</option>
-                                        <option value="Virgo">Virgo</option>
-                                        <option value="Libra">Libra</option>
-                                        <option value="Scorpio">Scorpio</option>
-                                        <option value="Sagittarius">Sagittarius</option>
-                                        <option value="Capricorn">Capricorn</option>
-                                        <option value="Aquarius">Aquarius</option>
-                                        <option value="Pisces">Pisces</option>
-                                </select>
-                            <button type="submit" className="btn btn-success" onClick={this.handleSubmit}>Add Name</button>
-                            </div>
-                        </form>
+                        <h4>Sorry, There was an error on the search.</h4>
+                        <p>Please try again.</p>
 
                     </div>
                 }

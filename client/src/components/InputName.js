@@ -2,6 +2,7 @@ import React, {Component, Fragment} from 'react';
 import Result from './Result.js';
 import '../styles/InputName.css';
 import randomColor from 'randomcolor';
+import './powerColor.js';
 
 class InputName extends Component {
 
@@ -15,7 +16,6 @@ class InputName extends Component {
         color: ""
     }
 
-
     submitForm = (e)=> {
         e.preventDefault();
         let nameData = this.state.name
@@ -25,7 +25,7 @@ class InputName extends Component {
         if (!nameData || !genderData || !zodiacData) {
             alert('Please fill all required field.')
         } else {
-
+            
             fetch(`https://devbrewer-horoscope.p.rapidapi.com/week/short/${zodiacData}`, {
                 method:  'GET',
                 headers: {
@@ -36,11 +36,11 @@ class InputName extends Component {
                 })
                 .then(res => res.json())
                 .then(newData => {
-                    
+
                     this.setState({
                         data: newData[`${zodiacData}`]['This Week'],
                         result: true,
-                        color: randomColor({luminosity:'bright', count: 1})
+                        color: randomColor({ count: 1, hue: `${global.powerColor[zodiacData]}`})
                     })
 
                     })

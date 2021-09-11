@@ -46,9 +46,6 @@ app.get('/names/:gender/:firstname/:sign', async(req, res) => {
 app.post('/names', async (req, res) => {
 
   let {firstname, gender, sign} = req.body
-  console.log(req)
-  console.log(res)
-  console.log(firstname)
 
   // try {
   //   let {firstname, gender, sign} = req.body
