@@ -1,3 +1,15 @@
 #result {
+    border-radius: 25px;
     padding: 2em 1em;
+    box-shadow: 0 1px 6px 1px rgb(0 0 0 / 30%);
 }
+
+#result::after{
+    box-shadow: 0 1px 6px 1px rgb(0 0 0 / 30%);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+#result:hover::after {
+    opacity: 1;
+  }

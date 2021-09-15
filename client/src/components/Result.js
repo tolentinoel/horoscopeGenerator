@@ -7,79 +7,68 @@ import Spinner from 'react-bootstrap/Spinner';
 class Result extends React.Component {
 
     state ={
-        name: this.props.nameState,
-        gender: this.props.genderState,
-        zodiac: this.props.zodiacState
+        data: this.props,
+        loading: true,
+        nameColor: ""
     }
 
-    handleSubmit = (e)=> {
-        e.preventDefault();
-        let body = {
-            firstname : this.state.name,
-            gender: this.state.gender,
-            sign: this.state.zodiac
-        }
 
-        if (!body) {
-            alert('Please fill all required field.')
-        } else {
-            
-            fetch(`https://devbrewer-horoscope.p.rapidapi.com/week/short/${body.sign}`, {
+    loadData = (props) => {
+        this.setState({loading: false});
+
+
+    }
+    isLoading = () => {
+        this.loadData(this.props)
+    }
+
+    colorName = (hex) => {
+        let hexcode = hex[0].replace(/[^a-zA-Z ]/, "")
+
+        fetch(`https://www.thecolorapi.com/id?hex=${hexcode}`, {
                 method:  'GET',
                 headers: {
-                    'Content-Type': 'application/json',
-                    'x-rapidapi-host': 'devbrewer-horoscope.p.rapidapi.com',
-                    'x-rapidapi-key': '03d3d82ab4mshc35210787820efap1d8f55jsn0fc7b41c1c9c'
-                }
-            })
-            .then(res => res.json())
-            .then(data => {
+                    'Content-Type': 'application/json'
+                    }
+                })
+                .then(res => res.json())
+                .then(newData => {
 
-                if (data.error){
-                    alert("Error adding your name. Please try again.")
-                } else{
-                    alert("Name Succesfully added!")
-                    window.location= "/"
-                }
-
-            })
+                    this.setState({
+                        nameColor: newData.name.value
+                    })
+                })
+                this.colorOfTheDay(this.state.nameColor)
 
         }
-    }
 
+        colorOfTheDay = (str) => {
+           return <p><strong>Your color of the Day:</strong><br/> {str}</p>
+        }
 
-    handleChange = (e) => {
-
-        this.setState({[e.target.name]: e.target.value})
-    }
 
 
     render(){
-        
+
         return (
 
+
                 <div>
-
-                    
-                    { this.props ?
-                    <div id="result" className= "text-center my-3" style={{backgroundColor: `${this.props.colorState[0]}`}}>
-                        <Spinner animation="border" role="status">
-                        <span className="visually-hidden">Loading...</span>
-                    </Spinner>
-                        <h2>{this.props.nameState}</h2>
-                        <p>Sign: {this.props.zodiacState}</p>
-                        <p><strong>General advice:</strong><br/> {this.props.data}</p>
-                    </div>
-                    :
-                    <div id="result" className= "text-center my-5" >
-
-                        <h4>Sorry, There was an error on the search.</h4>
-                        <p>Please try again.</p>
-
-                    </div>
-                }
-
-
+                    { Object.keys(this.state.data).length > 0 ?
+                        <div id="result" className= "text-center my-3" style={{backgroundColor: `${this.props.colorState[0]}`}}>
+                            <h2>{this.props.nameState}</h2>
+                            <p>Sign: {this.props.zodiacState}</p>
+                            <p><strong>General advice:</strong><br/> {this.props.data}</p>
+                            {this.colorName(this.props.colorState)}
+                        </div>
+                        :
+                        <>
+                            <Spinner animation="border" role="status">
+                                <span className="visually-hidden">Loading...</span>
+                            </Spinner>
+                            <p>Please wait..</p>
+                        </>
+                    }
                 </div>
         )
     }
