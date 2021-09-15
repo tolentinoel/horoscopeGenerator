@@ -1,9 +1,10 @@
-import React, {Component} from 'react';
+import React from 'react';
 import '../styles/Result.css';
+import Spinner from 'react-bootstrap/Spinner';
 
 
 
-class Result extends Component {
+class Result extends React.Component {
 
     state ={
         name: this.props.nameState,
@@ -22,7 +23,7 @@ class Result extends Component {
         if (!body) {
             alert('Please fill all required field.')
         } else {
-            debugger
+            
             fetch(`https://devbrewer-horoscope.p.rapidapi.com/week/short/${body.sign}`, {
                 method:  'GET',
                 headers: {
@@ -33,8 +34,7 @@ class Result extends Component {
             })
             .then(res => res.json())
             .then(data => {
-                
-                debugger
+
                 if (data.error){
                     alert("Error adding your name. Please try again.")
                 } else{
@@ -59,9 +59,13 @@ class Result extends Component {
         return (
 
                 <div>
+
+                    
                     { this.props ?
                     <div id="result" className= "text-center my-3" style={{backgroundColor: `${this.props.colorState[0]}`}}>
-
+                        <Spinner animation="border" role="status">
+                        <span className="visually-hidden">Loading...</span>
+                    </Spinner>
                         <h2>{this.props.nameState}</h2>
                         <p>Sign: {this.props.zodiacState}</p>
                         <p><strong>General advice:</strong><br/> {this.props.data}</p>
