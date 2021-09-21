@@ -7,10 +7,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   height: 100vh;
   width: 100vw;
-  background-repeat: no-repeat;
-  background-image: url(https://cdn.dribbble.com/users/1338391/screenshots/15344962/forest_at_night_background_landscape_wallpaper_flat_desin_vector_art_4x.jpg);
-  /* background-image: url(https://i.pinimg.com/originals/68/7b/28/687b287b0f3bf8b0ab1086dc92ffeb0e.jpg); */
-  background-size: cover;
+  
 
 }
 
