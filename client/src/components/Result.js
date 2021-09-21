@@ -28,7 +28,7 @@ class Result extends React.Component {
                         nameColor: newData.name.value
                     })
                 })
-                
+
     }
 
     loadData = (props) => {
@@ -39,16 +39,15 @@ class Result extends React.Component {
     isLoading = () => {
         this.loadData(this.props)
     }
-      
+
 
 
     render(){
 
         return (
 
-
                 <div>
-                    {/* {this.colorName(this.props.colorState)} */}
+
                     { Object.keys(this.state.data).length > 0 ?
                         <div id="result" className= "text-center my-3" style={{backgroundColor: `${this.props.colorState[0]}`}}>
                             <div>
