@@ -10,7 +10,9 @@
   height: 40vmin;
   pointer-events: none;
 }
-
+#bg{
+  position: absolute;
+}
 
 #bg img{
   position: absolute;

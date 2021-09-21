@@ -46,7 +46,7 @@ class Result extends React.Component {
 
         return (
 
-                <div>
+                <div className="resultDiv">
 
                     { Object.keys(this.state.data).length > 0 ?
                         <div id="result" className= "text-center my-3" style={{backgroundColor: `${this.props.colorState[0]}`}}>
@@ -68,7 +68,7 @@ class Result extends React.Component {
                             <p>Please wait..</p>
                         </>
                     }
-                </div>
+               </div>
         )
     }
 }

@@ -9,7 +9,7 @@ class InputName extends React.Component {
 
     state = {
         name: "",
-        gender: "",
+        // gender: "",
         zodiac: "",
         data: null,
         result: false,
@@ -19,10 +19,11 @@ class InputName extends React.Component {
     submitForm = (e)=> {
         e.preventDefault();
         let nameData = this.state.name
-        let genderData = this.state.gender
+        // let genderData = this.state.gender
         let zodiacData = this.state.zodiac
 
-        if (!nameData || !genderData || !zodiacData) {
+        // if (!nameData || !genderData || !zodiacData) {
+        if (!nameData || !zodiacData) {
             alert('Please fill all required field.')
         } else {
             fetch(`https://devbrewer-horoscope.p.rapidapi.com/week/short/${zodiacData}`, {
@@ -51,7 +52,7 @@ class InputName extends React.Component {
     resetForm = () => {
         this.setState({
           name: '',
-          gender: '',
+        //   gender: '',
           zodiac: ''
         });
     }
@@ -59,8 +60,9 @@ class InputName extends React.Component {
     render() {
 
         return (
+            <>
             <div id="inputName">
-                <h2 className="text-center my-5">General Horoscope Advice</h2>
+                <h2 className="text-center my-5" id="formHeader">General Horoscope Advice</h2>
                 <div id="formDiv"></div>
                 <div>
                     <form className="d-flex" id="form">
@@ -75,7 +77,7 @@ class InputName extends React.Component {
 
 
                         <div className="input-group mb-1">
-                            <label className="input-group-text" htmlFor="inputGroupSelect02">Gender Identity:</label>
+                            {/* <label className="input-group-text" htmlFor="inputGroupSelect02">Gender Identity:</label>
                             <select
                                 className="form-select"
                                 id="inputGroupSelect02"
@@ -85,7 +87,7 @@ class InputName extends React.Component {
                                     <option >...</option>
                                     <option value="Female">Female</option>
                                     <option value="Male">Male</option>
-                            </select>
+                            </select> */}
 
                             <label className="input-group-text" htmlFor="inputGroupSelect03">Zodiac:</label>
                             <select
@@ -112,10 +114,11 @@ class InputName extends React.Component {
                         <button type="submit" onClick={this.submitForm} className="btn btn-warning">Submit</button>
                         </div>
                     </form>
-                    {this.state.result ? <Result colorState={this.state.color} data={this.state.data} nameState={this.state.name} genderState={this.state.gender} zodiacState={this.state.zodiac} /> : null }
 
                 </div>
             </div>
+                    {this.state.result ? <Result colorState={this.state.color} data={this.state.data} nameState={this.state.name}  zodiacState={this.state.zodiac} /> : null }
+        </>
         );
 
     }
