@@ -1,4 +1,4 @@
-import React, { Fragment} from 'react';
+import React from 'react';
 import Result from './Result.js';
 import '../styles/InputName.css';
 import randomColor from 'randomcolor';
