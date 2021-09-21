@@ -59,8 +59,9 @@ class InputName extends React.Component {
     render() {
 
         return (
-            <>
+            <div id="inputName">
                 <h2 className="text-center my-5">General Horoscope Advice</h2>
+                <div id="formDiv"></div>
                 <div>
                     <form className="d-flex" id="form">
                         <input
@@ -114,7 +115,7 @@ class InputName extends React.Component {
                     {this.state.result ? <Result colorState={this.state.color} data={this.state.data} nameState={this.state.name} genderState={this.state.gender} zodiacState={this.state.zodiac} /> : null }
 
                 </div>
-            </>
+            </div>
         );
 
     }

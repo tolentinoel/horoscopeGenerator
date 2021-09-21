@@ -1,7 +1,17 @@
+#inputName{
+    justify-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 200px;
+    width: 1000px;
+    margin: auto;
+}
+
 #form{
     margin-left: auto;
     margin-right: auto;
-    width: 70%;
+    width: 100%;
     flex-direction: inherit;
     flex-wrap: wrap;
 }
@@ -9,4 +19,13 @@
 .input-group{
     flex-direction: inherit;
     justify-content: center;
+}
+
+#formDiv{
+    position: absolute;
+    height: 300px;
+    width: 1000px;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
 }
