@@ -7,6 +7,7 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^12.1.0",
     "@testing-library/user-event": "^13.2.1",
+    "@vve/immer": "^8.1.1",
     "bootstrap": "^5.1.1",
     "joi": "^17.4.2",
     "npm-check": "^5.9.2",
