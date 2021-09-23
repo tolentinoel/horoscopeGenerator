@@ -1,36 +1,49 @@
 .resultDiv{
-    display: flex;
-    height: 50%;
-    width: 100%;
-    /* flex-direction: row; */
-    justify-content: center;
-    /* margin-top: 152px; */
-    position: absolute;
-    bottom: 30px;
-  }
+  display: flex;
+  height: 50%;
+  width: 100%;
+  justify-content: center;
+  position: absolute;
+  bottom: 30px;
+}
 
 
 #result {
-    display: flex;
-    bottom: 100px;
-    border-radius: 25px;
-    padding: 2em 1em;
-    box-shadow: 0 1px 6px 1px rgb(0 0 0 / 30%);
-    align-items: center;
-    width: 55%;
-    flex-wrap: wrap;
-    justify-content: center;
-
-
+  display: flex;
+  bottom: 100px;
+  border-radius: 25px;
+  padding: 1em 1em;
+  box-shadow: 0 1px 6px 1px rgb(0 0 0 / 30%);
+  align-items: center;
+  width: 60%;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 #result::after{
-    box-shadow: 0 1px 6px 1px rgb(0 0 0 / 30%);
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
+  box-shadow: 0 1px 6px 1px rgb(0 0 0 / 30%);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
 }
 
 #result:hover::after {
-    opacity: 1;
-  }
+  opacity: 1;
+}
 
+.exit{
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  padding-right: 10px;
+}
+
+#exitBtn{
+  transition: all 200ms ease;
+  border-radius: 12px;
+  padding: 0px 12px;
+}
+
+#exitBtn:hover{
+  box-shadow: 0 1px 6px 1px rgb(0 0 0 / 30%);
+  transform: scale(1.2);
+}
