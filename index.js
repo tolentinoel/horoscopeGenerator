@@ -51,7 +51,6 @@ app.post('/names', async (req, res) => {
   //   let {firstname, gender, sign} = req.body
   //   const hexcode = randomColor({luminosity:'bright', count: 1})
   //   let horoscope
-
   //   horoscope = await fetch(`https://devbrewer-horoscope.p.rapidapi.com/week/short/${sign}`, {
   //     "method": "GET",
   //     "headers": {
@@ -64,9 +63,7 @@ app.post('/names', async (req, res) => {
   //   // data.sign['This Week'])
   //   console.log(horoscope)
   //   let newData = await pool.query('INSERT INTO names (firstname, gender, hexcode, sign, horoscope) VALUES ($1, $2, $3, $4, $5) RETURNING *',[firstname, gender, hexcode, sign, horoscope]);
-
   //   res.json(newData.rows[0])
-
   // } catch (err){
   //   console.error(err.message)
   // }

@@ -111,7 +111,7 @@ class InputName extends React.Component {
                                     <option value="Pisces">Pisces</option>
                             </select>
 
-                        <button type="submit" onClick={this.submitForm} className="btn btn-warning">Submit</button>
+                        <button id="submitBtn" type="submit" onClick={this.submitForm} className="btn btn-warning">Submit</button>
                         </div>
                     </form>
 

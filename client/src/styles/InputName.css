@@ -69,3 +69,6 @@
     background-color: rgb(228 228 228 / 15%); 
 }
 
+.disabledForm{
+    pointer-events: none;
+}
