@@ -4,7 +4,7 @@ global.powerColor = {
     'Taurus' : 'green',
     'Gemini' : 'yellow',
     'Cancer' : 'monochrome' ,
-    'Leo' : '#FFD700',
+    'Leo' : 'orange',
     'Virgo' : '#4b5320',
     'Libra' : 'blue',
     'Scorpio' : 'monochrome',

@@ -5,7 +5,7 @@ class FootNav extends Component {
     render() {
         return (
             <div className="footerNav">
-                FOOTER
+                Built and designed by <a id="footLink" href="https://ellaine.dev/" target="_blank" rel="noreferrer" >ellaine.dev</a>
             </div>
         );
     }

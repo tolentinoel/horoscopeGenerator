@@ -63,7 +63,7 @@ class Result extends React.Component {
                 <div className="resultDiv">
 
                     { Object.keys(this.state.data).length > 0 ?
-                        <div id="result" className= "text-center my-3" style={{backgroundColor: `${this.props.colorState[0]}`}}>
+                        <div id="result" className= "text-center my-3 animate__animated animate__fadeInDown" style={{backgroundColor: `${this.props.colorState[0]}`}}>
                             {this.disableForm()}
                             <div className="exit"><Button id ="exitBtn" variant="light" onClick={() =>this.refresh()} className="btn btn-warning">X</Button></div>
                             <div >
@@ -72,7 +72,7 @@ class Result extends React.Component {
                                     <h2>{this.props.nameState}<img id="signImg" src={this.props.iconState} alt={this.props.zodiacState} /></h2>
                                     <h3><strong>Zodiac Sign:</strong><br/> {this.props.zodiacState}</h3>
                                 </div>
-                                <p><strong>General advice:</strong><br/> {this.props.data}</p>
+                                <p><strong>Advice for the week:</strong><br/> {this.props.data}</p>
                             </div>
                         </div>
                         :
