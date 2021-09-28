@@ -1,7 +1,7 @@
 
 global.powerColor = {
     'Aries' : 'red',
-    'Taurus' : '#808000',
+    'Taurus' : 'green',
     'Gemini' : 'yellow',
     'Cancer' : 'monochrome' ,
     'Leo' : '#FFD700',

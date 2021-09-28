@@ -1,0 +1,18 @@
+* {
+    color: aliceblue!important
+}
+
+.topNavDiv{
+    position: relative;
+    justify-items: center;
+    width: 100vw;
+}
+
+#topNav{
+    padding: 5px 25px;
+    gap: 50px;
+}
+
+.nav-link:hover, .nav-link:active{
+    color: #fec108!important;;
+}

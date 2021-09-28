@@ -1,3 +1,9 @@
+*{
+    
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-size: 20px;
+    line-height: 24px;
+}
 #inputName{
     position: relative;
     justify-items: center;
@@ -10,7 +16,9 @@
     padding-top: 85px;
 }
 
-#formHeader{
+#formHeader {
+    font-family: 'Abril Fatface', cursive;
+    color: white;
     margin: 35px 0px!important;
     z-index: 1;
 }
