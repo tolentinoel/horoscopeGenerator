@@ -66,14 +66,17 @@ class Result extends React.Component {
                         <div id="result" className= "text-center my-3" style={{backgroundColor: `${this.props.colorState[0]}`}}>
                             {this.disableForm()}
                             <div className="exit"><Button id ="exitBtn" variant="light" onClick={() =>this.refresh()} className="btn btn-warning">X</Button></div>
-                            <div>
-                                <h2>{this.props.nameState}</h2>
-                                <p>Sign: {this.props.zodiacState}</p>
+                            <div >
+                                <div id="resultContents">
+                                    <h3><strong>Your color of the Day:</strong><br/>{this.state.nameColor}</h3>
+                                    <h2>{this.props.nameState}</h2>
+                                    <h3><strong>Zodiac Sign:</strong><br/> {this.props.zodiacState}</h3>
+                                </div>
                                 <p><strong>General advice:</strong><br/> {this.props.data}</p>
                             </div>
-                            <div>
+                            {/* <div>
                                 <p><strong>Your color of the Day:</strong><br/>{this.state.nameColor}</p>
-                            </div>
+                            </div> */}
                         </div>
                         :
                         <>
