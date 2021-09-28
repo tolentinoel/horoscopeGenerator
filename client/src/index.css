@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Montserrat&family=Yanone+Kaffeesatz:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@400;500;700&display=swap');
 
 /* font-family: 'Abril Fatface', cursive; THICK
 font-family: 'Montserrat', sans-serif; NORMAL
-font-family: 'Yanone Kaffeesatz', sans-serif; THIN */
+font-family: 'Yanone Kaffeesatz', sans-serif; THIN 
+font-family: 'Dosis', sans-serif; */
 
 body {
   margin: 0;

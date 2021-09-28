@@ -1,6 +1,7 @@
 *{
-    
-    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-family: 'Dosis', sans-serif;
+    font-weight: 500;
+ 
     font-size: 20px;
     line-height: 24px;
 }
@@ -59,7 +60,6 @@
 .input-group-text{
     background: transparent;
 	border: 1px solid rgba(255,255,255,0.8);
-	/* border-radius: 10px; */
     color:aliceblue;
 }
 

@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import '../styles/TopNav.css';
-import Nav from 'react-bootstrap/Nav'
+import Nav from 'react-bootstrap/Nav';
 
 class TopNav extends Component {
     render() {
         return (
             <div className="topNavDiv">
-                <Nav id="topNav" className="justify-content-end" activeKey="#form">
+                <Nav id="topNav" variant="pills" className="justify-content-end" activeKey="#form">
                     <Nav.Item>
                         <Nav.Link href="#form">Home</Nav.Link>
                     </Nav.Item>

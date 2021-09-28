@@ -5,6 +5,9 @@
   justify-content: center;
   position: absolute;
   bottom: 20px;
+  color: rgb(255, 255, 255);
+  text-shadow: 1px 2px 0px #6a7b7e;
+  font-family: 'Dosis', sans-serif!important;
 }
 
 
