@@ -69,14 +69,11 @@ class Result extends React.Component {
                             <div >
                                 <div id="resultContents">
                                     <h3><strong>Your color of the Day:</strong><br/>{this.state.nameColor}</h3>
-                                    <h2>{this.props.nameState}</h2>
+                                    <h2>{this.props.nameState}<img id="signImg" src={this.props.iconState} alt={this.props.zodiacState} /></h2>
                                     <h3><strong>Zodiac Sign:</strong><br/> {this.props.zodiacState}</h3>
                                 </div>
                                 <p><strong>General advice:</strong><br/> {this.props.data}</p>
                             </div>
-                            {/* <div>
-                                <p><strong>Your color of the Day:</strong><br/>{this.state.nameColor}</p>
-                            </div> */}
                         </div>
                         :
                         <>

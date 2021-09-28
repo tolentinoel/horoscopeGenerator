@@ -13,7 +13,8 @@ class InputName extends React.Component {
         zodiac: "",
         data: null,
         result: false,
-        color: ""
+        color: "",
+        icon: ""
     }
 
     submitForm = (e)=> {
@@ -37,6 +38,7 @@ class InputName extends React.Component {
                 .then(res => res.json())
                 .then(newData => this.setState({
                         data: newData[`${zodiacData}`]['This Week'],
+                        icon: newData[`${zodiacData}`]['Icon'],
                         result: true,
                         color: randomColor({ count: 1, hue: `${global.powerColor[zodiacData]}`})
                     })
@@ -77,17 +79,6 @@ class InputName extends React.Component {
 
 
                         <div className="input-group mb-1">
-                            {/* <label className="input-group-text" htmlFor="inputGroupSelect02">Gender Identity:</label>
-                            <select
-                                className="form-select"
-                                id="inputGroupSelect02"
-                                value= {this.state.gender}
-                                name="gender"
-                                onChange= {this.handleChange}>
-                                    <option >...</option>
-                                    <option value="Female">Female</option>
-                                    <option value="Male">Male</option>
-                            </select> */}
 
                             <label className="input-group-text" htmlFor="inputGroupSelect03">Zodiac:</label>
                             <select
@@ -117,7 +108,7 @@ class InputName extends React.Component {
 
                 </div>
             </div>
-                    {this.state.result ? <Result colorState={this.state.color} data={this.state.data} nameState={this.state.name}  zodiacState={this.state.zodiac} /> : null }
+                    {this.state.result ? <Result iconState={this.state.icon} colorState={this.state.color} data={this.state.data} nameState={this.state.name}  zodiacState={this.state.zodiac} /> : null }
         </>
         );
 
