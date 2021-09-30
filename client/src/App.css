@@ -1,5 +1,5 @@
 .App {
-  height: 100vh;
+  height: 96vh;
   width: 100vw;
   text-align: center;
   /* padding: 60px 4% 30px; */
@@ -16,7 +16,7 @@
 
 #bg img{
   position: absolute;
-  height: 100vh;
+  height: 96vh;
   width: 100vw;
   object-fit: cover;
   filter: hue-rotate(260deg);
@@ -55,4 +55,34 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+
+/*low resolution tablets, mobiles (portrait)*/
+@media (min-width: 320px) and (max-width: 480px){
+  .App {
+    height: 175vh;
+  }
+
+
+  #bg img{
+    height: 175vh;
+  }
+}
+
+
+/*low resolution tablets, mobiles (landscape)*/
+@media (min-width: 481px) and (max-width: 767px){
+}
+
+
+/*tablets, ipads (portrait)*/
+@media (min-width: 768px) and (max-width: 1024px){
+
+}
+
+
+/*tablets, ipads (landscape)*/
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape){
+
 }

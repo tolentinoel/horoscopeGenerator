@@ -25,3 +25,29 @@
 .nav-link:hover, .nav-link:focus{
     color: #fec108!important;
 }
+
+
+/*low resolution tablets, mobiles (portrait)*/
+@media (min-width: 320px) and (max-width: 480px){
+
+    #topNav{
+        gap: 10px;
+    }
+}
+
+
+/*low resolution tablets, mobiles (landscape)*/
+@media (min-width: 481px) and (max-width: 767px){
+}
+
+
+/*tablets, ipads (portrait)*/
+@media (min-width: 768px) and (max-width: 1024px){
+
+}
+
+
+/*tablets, ipads (landscape)*/
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape){
+
+}

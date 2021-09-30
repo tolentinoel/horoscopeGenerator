@@ -4,7 +4,7 @@
   width: 100%;
   justify-content: center;
   position: absolute;
-  bottom: 80px;
+  bottom: 15%;
   color: rgb(255, 255, 255);
   text-shadow: 1px 1px 2px #384951;
   font-family: 'Dosis', sans-serif!important;
@@ -18,7 +18,7 @@
   padding: 10px 18px;
   box-shadow: 3px 5px 11px 4px rgb(0 0 0 / 49%);
   align-items: center;
-  width: 67%;
+  width: 80%;
   flex-wrap: wrap;
   justify-content: center;
   border-top: 3px solid rgb(225 225 225 / 78%);
@@ -41,7 +41,7 @@
   align-items: center;
   flex-direction: row;
   gap: 22px;
-  width: 295px;
+  width: 33%;
   justify-content: flex-start;
 }
 
@@ -65,12 +65,13 @@
 
 #result p{
   margin-bottom: 15px;
+  font-size: 85%;
 }
 
 #exitBtn{
   transition: all 200ms ease;
   border-radius: 12px;
-  padding: 2px 10px;
+  padding: 0px 10px;
   line-height: inherit;
   font-size: initial;
   font-family: 'Montserrat', sans-serif;
@@ -79,4 +80,50 @@
 #exitBtn:hover{
   box-shadow: 0 1px 6px 1px rgb(0 0 0 / 30%);
   transform: scale(1.2);
+}
+
+/*low resolution tablets, mobiles (portrait)*/
+@media (min-width: 320px) and (max-width: 480px){
+  #result{
+    width: 85%;
+  }
+
+  .resultDiv{
+    bottom: -58%;
+  }
+
+  #resultContents{
+    flex-direction: column;
+    font-size: inherit;
+  }
+
+  #resultContents h2{
+    width: 55%;
+  }
+  #resultContent h3{
+    margin-bottom: 15px;
+  }
+
+  #signImg{
+    width: 58px;
+  }
+
+  
+}
+
+
+/*low resolution tablets, mobiles (landscape)*/
+@media (min-width: 481px) and (max-width: 767px){
+}
+
+
+/*tablets, ipads (portrait)*/
+@media (min-width: 768px) and (max-width: 1024px){
+
+}
+
+
+/*tablets, ipads (landscape)*/
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape){
+
 }

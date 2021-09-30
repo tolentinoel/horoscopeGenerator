@@ -7,14 +7,13 @@
 }
 #inputName{
     position: relative;
+    top: 12%;
     justify-items: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 200px;
-    width: 1000px;
     margin: auto;
-    padding-top: 85px;
+    justify-content: flex-start;
 }
 
 #formHeader {
@@ -28,7 +27,7 @@
     position: relative;
     margin-left: auto;
     margin-right: auto;
-    width: 100%;
+    width: 90%;
     flex-direction: inherit;
     flex-wrap: wrap;
     gap: 10px;
@@ -72,7 +71,7 @@
     border-radius: 7px;
     position: absolute;
     height: 265px;
-    width: 1000px;
+    width: 60%;
     display: flex;
     margin-left: auto;
     margin-right: auto;
@@ -98,4 +97,47 @@
 #submitBtn{
     border-radius: 20px;
     margin-left: 5px;
+}
+
+
+/*low resolution tablets, mobiles (portrait)*/
+@media (min-width: 320px) and (max-width: 480px){
+    #inputName{
+        top: 5%;
+    }
+
+    #formHeader{
+        font-size: 24px;
+    }
+
+    #formDiv{
+        width: 85%;
+    }
+
+    #form{
+        width: 75%;
+    }
+
+    #submitBtn{
+        width: 66px;
+        font-size: smaller;
+        padding: 2px;
+    }
+}
+
+
+/*low resolution tablets, mobiles (landscape)*/
+@media (min-width: 481px) and (max-width: 767px){
+}
+
+
+/*tablets, ipads (portrait)*/
+@media (min-width: 768px) and (max-width: 1024px){
+
+}
+
+
+/*tablets, ipads (landscape)*/
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape){
+
 }

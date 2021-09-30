@@ -3,8 +3,7 @@
     width: 100vw;
     height: 40px;
     background: #0f5057bf;
-    position: absolute;
-    bottom: 0;
+    text-align: center;
     align-items: center;
     color: white;
     padding: 6px 2px;
