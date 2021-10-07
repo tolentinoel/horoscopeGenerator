@@ -59,12 +59,12 @@
 /*low resolution tablets, mobiles (portrait)*/
 @media (min-width: 320px) and (max-width: 480px){
   .App {
-    height: 175vh;
+    height: 170vh;
   }
 
 
   #bg img{
-    height: 175vh;
+    height: 170vh;
   }
 }
 
