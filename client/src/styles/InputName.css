@@ -103,7 +103,7 @@
 /*low resolution tablets, mobiles (portrait)*/
 @media (min-width: 320px) and (max-width: 480px){
     #inputName{
-        top: 5%;
+        top: 6%;
     }
 
     #formHeader{

@@ -9,7 +9,6 @@ class Result extends React.Component {
 
     state ={
         data: this.props,
-        loading: true,
         nameColor: ""
     }
 
@@ -32,14 +31,7 @@ class Result extends React.Component {
 
     }
 
-    loadData = (props) => {
-        this.setState({loading: false});
 
-
-    }
-    isLoading = () => {
-        this.loadData(this.props)
-    }
 
 
     disableForm = () => {
@@ -65,7 +57,7 @@ class Result extends React.Component {
                     { Object.keys(this.state.data).length > 0 ?
                         <div id="result" className= "text-center my-3 animate__animated animate__fadeInDown" style={{backgroundColor: `${this.props.colorState[0]}`}}>
                             {this.disableForm()}
-                            <div className="exit"><Button id ="exitBtn" variant="light" onClick={() =>this.refresh()} className="btn btn-warning">X</Button></div>
+                            <div className="exit"><Button id ="exitBtn" variant="light" onClick={() =>this.refresh()} className="btn btn-warning">x</Button></div>
                             <div >
                                 <div id="resultContents">
                                     <h3><strong>Your color of the Day:</strong><br/>{this.state.nameColor}</h3>

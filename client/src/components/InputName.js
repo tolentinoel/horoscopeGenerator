@@ -9,7 +9,6 @@ class InputName extends React.Component {
 
     state = {
         name: "",
-        // gender: "",
         zodiac: "",
         data: null,
         result: false,
@@ -20,10 +19,9 @@ class InputName extends React.Component {
     submitForm = (e)=> {
         e.preventDefault();
         let nameData = this.state.name
-        // let genderData = this.state.gender
+
         let zodiacData = this.state.zodiac
 
-        // if (!nameData || !genderData || !zodiacData) {
         if (!nameData || !zodiacData) {
             alert('Please fill all required field.')
         } else {
@@ -54,7 +52,6 @@ class InputName extends React.Component {
     resetForm = () => {
         this.setState({
           name: '',
-        //   gender: '',
           zodiac: ''
         });
     }

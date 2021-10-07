@@ -45,28 +45,29 @@ app.get('/names/:gender/:firstname/:sign', async(req, res) => {
 //ADDING NAME TO DB
 app.post('/names', async (req, res) => {
 
-  let {firstname, gender, sign} = req.body
+  // let {firstname, gender, sign} = req.body
 
-  // try {
-  //   let {firstname, gender, sign} = req.body
-  //   const hexcode = randomColor({luminosity:'bright', count: 1})
-  //   let horoscope
-  //   horoscope = await fetch(`https://devbrewer-horoscope.p.rapidapi.com/week/short/${sign}`, {
-  //     "method": "GET",
-  //     "headers": {
-  //       "x-rapidapi-host": "devbrewer-horoscope.p.rapidapi.com",
-  //       "x-rapidapi-key": "03d3d82ab4mshc35210787820efap1d8f55jsn0fc7b41c1c9c"
-  //     }
-  //   })
-  //   .then(res => res.json())
-  //   .then(data => data.sign)
-  //   // data.sign['This Week'])
-  //   console.log(horoscope)
-  //   let newData = await pool.query('INSERT INTO names (firstname, gender, hexcode, sign, horoscope) VALUES ($1, $2, $3, $4, $5) RETURNING *',[firstname, gender, hexcode, sign, horoscope]);
-  //   res.json(newData.rows[0])
-  // } catch (err){
-  //   console.error(err.message)
-  // }
+  try {
+    let {firstname, gender, sign} = req.body
+    const hexcode = randomColor({luminosity:'bright', count: 1})
+    let horoscope
+    horoscope = await fetch(`https://devbrewer-horoscope.p.rapidapi.com/week/short/${sign}`, {
+      "method": "GET",
+      "headers": {
+        "x-rapidapi-host": "devbrewer-horoscope.p.rapidapi.com",
+        "x-rapidapi-key": "03d3d82ab4mshc35210787820efap1d8f55jsn0fc7b41c1c9c"
+      }
+    })
+    .then(res => res.json())
+    .then(data => {
+      data[`${sign}`]['This Week']
+    })
+
+    let newData = await pool.query('INSERT INTO names (firstname, gender, hexcode, sign, horoscope) VALUES ($1, $2, $3, $4, $5) RETURNING *',[firstname, gender, hexcode, sign, horoscope]);
+    res.json(newData.rows[0])
+  } catch (err){
+    console.error(err.message)
+  }
 
 });
 

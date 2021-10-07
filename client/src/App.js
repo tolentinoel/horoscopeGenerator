@@ -16,7 +16,7 @@ function App() {
       <TopNav/>
       <InputName/>
     </div>
-        <FootNav/>
+      <FootNav/>
       
     </>
   );

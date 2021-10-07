@@ -31,7 +31,10 @@
 @media (min-width: 320px) and (max-width: 480px){
 
     #topNav{
-        gap: 10px;
+        background: linear-gradient(180deg, #1d0044f7, #64868a52);
+        grid-gap: 12px;
+        gap: 12px;
+        padding: 13px 8px;
     }
 }
 
