@@ -2,7 +2,7 @@ import React from 'react';
 import Result from './Result.js';
 import '../styles/InputName.css';
 import randomColor from 'randomcolor';
-import './powerColor.js';
+
 
 class InputName extends React.Component {
 
@@ -12,19 +12,37 @@ class InputName extends React.Component {
         zodiac: "",
         data: null,
         result: false,
-        color: "",
-        icon: ""
+        hexColor: [],
+        icon: "",
+        color: ""
     }
 
-    submitForm = (e)=> {
+
+    submitForm = (e) => {
         e.preventDefault();
         let nameData = this.state.name
-
         let zodiacData = this.state.zodiac
+        let powerColor = {
+            'Aries' : 'red',
+            'Taurus' : 'green',
+            'Gemini' : 'yellow',
+            'Cancer' : 'monochrome' ,
+            'Leo' : 'orange',
+            'Virgo' : '#4b5320',
+            'Libra' : 'blue',
+            'Scorpio' : 'monochrome',
+            'Saggitarius' : '#A020F0',
+            'Capricorn' : '#964B00',
+            'Aquarius' : '#007FFF',
+            'Pisces' : '#90ee90'
+
+        }
 
         if (!nameData || !zodiacData) {
             alert('Please fill all required field.')
         } else {
+
+
             fetch(`https://devbrewer-horoscope.p.rapidapi.com/week/short/${zodiacData}`, {
                 method:  'GET',
                 headers: {
@@ -34,16 +52,40 @@ class InputName extends React.Component {
                     }
                 })
                 .then(res => res.json())
-                .then(newData => this.setState({
+                .then(newData =>
+                    this.setState({
                         data: newData[`${zodiacData}`]['This Week'],
                         icon: newData[`${zodiacData}`]['Icon'],
                         result: true,
-                        color: randomColor({ count: 1, hue: `${global.powerColor[zodiacData]}`})
-                    })
-
-                )
+                        hexColor: randomColor({ count: 1, hue: `${powerColor[zodiacData]}`})
+                    }))
+                .then(() => {
+                    let hexcode = this.state.hexColor[0].replace(/[^a-zA-Z ]/, "")
+                    debugger
+                    fetch(`https://www.thecolorapi.com/id?hex=${hexcode}`, {
+                            method:  'GET',
+                            headers: {
+                                'Content-Type': 'application/json'
+                                }
+                            })
+                            .then(res => res.json())
+                            .then(newData => {
+                                this.setState({
+                                    color: newData.name.value
+                                })
+                            })
+                })
         }
+
     }
+
+
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState !== this.state) {
+          return
+        }
+      }
+
 
     handleChange = (e) => {
         this.setState({[e.target.name]: e.target.value})
@@ -52,11 +94,15 @@ class InputName extends React.Component {
     resetForm = () => {
         this.setState({
           name: '',
-          zodiac: ''
+          zodiac: '',
+          result: false
         });
     }
 
+ 
+
     render() {
+
 
         return (
             <>
@@ -105,7 +151,18 @@ class InputName extends React.Component {
 
                 </div>
             </div>
-                    {this.state.result ? <Result iconState={this.state.icon} colorState={this.state.color} data={this.state.data} nameState={this.state.name}  zodiacState={this.state.zodiac} /> : null }
+                    {this.state.color !== "" ?
+                        <Result
+                        color={this.state.color}
+                        icon={this.state.icon}
+                        hexColor={this.state.hexColor}
+                        data={this.state.data}
+                        name={this.state.name}
+                        zodiac={this.state.zodiac}
+                        />
+                        :
+                        null}
+
         </>
         );
 

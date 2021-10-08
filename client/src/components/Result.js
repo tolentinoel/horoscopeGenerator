@@ -7,31 +7,11 @@ import Button from 'react-bootstrap/Button'
 
 class Result extends React.Component {
 
-    state ={
-        data: this.props,
-        nameColor: ""
-    }
-
-
-    componentDidMount() {
-        let hexcode = this.props.colorState[0].replace(/[^a-zA-Z ]/, "")
-
-        fetch(`https://www.thecolorapi.com/id?hex=${hexcode}`, {
-                method:  'GET',
-                headers: {
-                    'Content-Type': 'application/json'
-                    }
-                })
-                .then(res => res.json())
-                .then(newData => {
-                    this.setState({
-                        nameColor: newData.name.value
-                    })
-                })
-
-    }
-
-
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState !== this.state) {
+          return
+        }
+      }
 
 
     disableForm = () => {
@@ -49,20 +29,19 @@ class Result extends React.Component {
 
 
     render(){
-
+   
         return (
-
                 <div className="resultDiv">
 
-                    { Object.keys(this.state.data).length > 0 ?
-                        <div id="result" className= "text-center my-3 animate__animated animate__fadeInDown" style={{backgroundColor: `${this.props.colorState[0]}`}}>
+                    { this.props.hexColor.length !== 0 ?
+                        <div id="result" className= "text-center my-3 animate__animated animate__fadeInDown" style={{backgroundColor: `${this.props.hexColor[0]}`}}>
                             {this.disableForm()}
                             <div className="exit"><Button id ="exitBtn" variant="light" onClick={() =>this.refresh()} className="btn btn-warning">x</Button></div>
-                            <div >
+                            <div>
                                 <div id="resultContents">
-                                    <h3><strong>Your color of the Day:</strong><br/>{this.state.nameColor}</h3>
-                                    <h2>{this.props.nameState}<img id="signImg" src={this.props.iconState} alt={this.props.zodiacState} /></h2>
-                                    <h3><strong>Zodiac Sign:</strong><br/> {this.props.zodiacState}</h3>
+                                    <h3><strong>Your color of the Day:</strong><br/>{this.props.color}</h3>
+                                    <h2>{this.props.name}<img id="signImg" src={this.props.icon} alt={this.props.zodiac} /></h2>
+                                    <h3><strong>Zodiac Sign:</strong><br/> {this.props.zodiac}</h3>
                                 </div>
                                 <p><strong>Advice for the week:</strong><br/> {this.props.data}</p>
                             </div>
