@@ -5,8 +5,9 @@
   "main": "index.js",
   "type": "module",
   "engines": {
-    "node": ">=15.x",
-    "npm": ">=6.x"
+    "node": "15.x",
+    "npm": "7.x",
+    "yarn": "1.x"
   },
   "scripts": {
     "dev": "nodemon index.js",

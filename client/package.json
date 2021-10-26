@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": ">=15.x",
-    "npm": ">=7.x",
-    "yarn": ">=1.x"
+    "node": "15.x",
+    "npm": "7.x",
+    "yarn": "1.x"
   },
   "dependencies": {
     "@hapi/hoek": "^9.2.0",
