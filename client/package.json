@@ -2,6 +2,11 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "15.2.0",
+    "npm": "7.23.0",
+    "yarn": "1.22.5"
+  },
   "dependencies": {
     "@hapi/hoek": "^9.2.0",
     "@testing-library/jest-dom": "^5.11.4",
