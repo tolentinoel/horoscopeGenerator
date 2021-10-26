@@ -61,7 +61,7 @@ class InputName extends React.Component {
                     }))
                 .then(() => {
                     let hexcode = this.state.hexColor[0].replace(/[^a-zA-Z ]/, "")
-                    debugger
+                
                     fetch(`https://www.thecolorapi.com/id?hex=${hexcode}`, {
                             method:  'GET',
                             headers: {
