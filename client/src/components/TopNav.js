@@ -8,13 +8,13 @@ class TopNav extends Component {
             <div className="topNavDiv">
                 <Nav id="topNav" variant="pills" className="justify-content-end" activeKey="#form">
                     <Nav.Item>
-                        <Nav.Link href="#form">Home</Nav.Link>
+                        <Nav.Link href="#form" rel="noreferrer">Home</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                        <Nav.Link eventKey="link-1" href="https://github.com/tolentinoel/horoscopeGenerator" target="_blank">Repo</Nav.Link>
+                        <Nav.Link eventKey="link-1" href="https://github.com/tolentinoel/horoscopeGenerator" target="_blank" rel="noreferrer">Repo</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                        <Nav.Link eventKey="link-2" href="https://ellaine.dev/" target="_blank">ellaine.dev</Nav.Link>
+                        <Nav.Link eventKey="link-2" href="https://ellaine.dev/" target="_blank" rel="noreferrer">ellaine.dev</Nav.Link>
                     </Nav.Item>
                 </Nav>
             </div>
